@@ -1,6 +1,6 @@
-# moranfit-env
+# dips-env
 
-Containerized environment for MoranFit Code
+Containerized environment for DIPS Code
 
 To install on Grace, run
 
@@ -8,5 +8,5 @@ To install on Grace, run
 module load WebProxy
 username="$(whoami)"
 export SINGULARITY_CACHEDIR="/scratch/user/$username/.singularity/cache"
-singularity pull docker://ghcr.io/hamoran/moranfit-env:latest
+singularity pull docker://ghcr.io/hamoran/dips-env:latest
 ```
