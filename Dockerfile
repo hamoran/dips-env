@@ -13,12 +13,24 @@ RUN conda env create -f gpyopt_env.yml
 
 # Install pip manually in case it is missing in the environment
 RUN conda run -n gpyopt3 python -m ensurepip --upgrade
-RUN conda run -n gpyopt3 python -m pip install --upgrade pip setuptools wheel
+RUN conda run -n gpyopt3 python -m pip install --upgrade pip wheel #setuptools wheel
 
 #RUN cd /home && \
 #    git clone -b plugins https://github.com/Tabor-Research-Group/Reinvent && \
 #    git clone https://github.com/connorcoley/scscore
 #ENV PYTHONPATH=/home/Reinvent:/home/scscore
+
+RUN conda run -n gpyopt3 python -c "\
+import sys; \
+import setuptools; \
+import pkg_resources; \
+import rdkit; \
+import GPy; \
+import GPyOpt; \
+print('Python:', sys.executable); \
+print('Setuptools:', setuptools.__version__); \
+print('RDKit:', rdkit.__version__); \
+print('GPyOpt:', GPyOpt.__file__)"
 
 # Set the default shell to use bash and activate the conda environment
 #ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "gpyopt3"]
